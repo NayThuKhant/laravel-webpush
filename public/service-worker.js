@@ -5,19 +5,12 @@ self.addEventListener('push', function (e) {
     }
 
     if (e.data) {
-
-        var title = 'Notification';
-        var options = {
-            body: 'This is the body of the notification.',
-            icon: 'path/to/icon.png',
-            actions: [
-                {action: 'action1', title: 'Action 1'},
-                {action: 'action2', title: 'Action 2'}
-            ]
-        };
-
         const message = e.data.json();
         console.log(message);
-        self.registration.showNotification(title, options).then(r => console.log(r));
+        self.registration.showNotification(message.title, {
+            body: message.body,
+            icon: message.icon,
+            actions: message.actions
+        }).then(r => console.log(r));
     }
 });

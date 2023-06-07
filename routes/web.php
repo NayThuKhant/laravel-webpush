@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Notifications\PushNotification;
+use Illuminate\Support\Facades\Artisan as ArtisanAlias;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -42,3 +42,8 @@ Route::post("/push-subscriptions", function (Request $request) {
     Auth::user()->updatePushSubscription($request->endpoint, $request->keys['p256dh'], $request->keys['auth']);
     return response()->json(['success' => true], 200);
 })->middleware("auth");
+
+Route::post("send-notification", function () {
+    ArtisanAlias::call('push:notification');
+    return redirect()->back();
+})->name("send-notification");

@@ -1,7 +1,6 @@
 // Start installation of Service Worker
 initServiceWorker();
 
-
 // Register Service Worker
 function initServiceWorker() {
     if (!"serviceWorker" in navigator) {

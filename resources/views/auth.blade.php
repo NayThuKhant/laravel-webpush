@@ -16,7 +16,6 @@
                             php artisan push:notification
                         </code>
                     </div>
-
                     <p class="mt-5 font-semibold">OR</p>
 
                     <form method="POST" action="{{ route('send-notification') }}">
